@@ -15,17 +15,21 @@ const abl = {
         if (typeof apiKey !== "string") throw new Error('Api Key only should be a string, not a number');
         if (!client) throw new Error('Missing client param');
         try {
-            const post = await axios.post(url, {
-                guild_count:  client.guilds.cache.size
-            }, {
-                headers: {
-                    token: apiKey,
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                }
-            })
 
-            return post.data
+            client.on('ready', async () => {
+                const post = await axios.post(url, {
+                    guild_count:  client.guilds.cache.size
+                }, {
+                    headers: {
+                        token: apiKey,
+                        Accept: "application/json",
+                        "Content-Type": "application/json"
+                    }
+                })
+
+                return post.data
+            });
+
         } catch (e) {
             return e.message
         }

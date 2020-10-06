@@ -1,5 +1,6 @@
-Astro Bot List wrapper
+<h1 align="center">Astro Bot List Javascript wrapper</h1>
 
+<p>Send your guild count easily</p>
 [https://botlists.com](https://botlists.com)
 
 ```js
@@ -9,9 +10,9 @@ const client = new Client({
     disableEveryone: true,
 })
 
-client.on('ready', () => {
-    abl.count('<api key>', client).then((data) => console.log(data)).catch((e) => console.log(e))
-})
+abl.count('<api key>', client)
+    .then((data) => console.log(data))
+    .catch((e) => console.log(e))
 ```
 
 ```js
