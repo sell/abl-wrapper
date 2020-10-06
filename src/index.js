@@ -17,17 +17,21 @@ const abl = {
         try {
 
             client.on('ready', async () => {
-                const post = await axios.post(url, {
-                    guild_count:  client.guilds.cache.size
-                }, {
-                    headers: {
-                        token: apiKey,
-                        Accept: "application/json",
-                        "Content-Type": "application/json"
-                    }
-                })
+                try {
+                    const post = await axios.post(url, {
+                        guild_count:  client.guilds.cache.size
+                    }, {
+                        headers: {
+                            token: apiKey,
+                            Accept: "application/json",
+                            "Content-Type": "application/json"
+                        }
+                    })
 
-                return post.data
+                    return post.data
+                } catch (e) {
+                    return e.message
+                }
             });
 
         } catch (e) {

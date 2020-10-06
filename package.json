@@ -1,7 +1,7 @@
 {
   "name": "abl-wrapper",
-  "version": "1.0.3",
-  "description": "Arto bot list api wrapper",
+  "version": "1.0.4",
+  "description": "Astro bot list js api wrapper",
   "main": "src/index.js",
   "scripts": {},
   "keywords": ["astro bot list"],
