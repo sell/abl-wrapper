@@ -11,7 +11,7 @@ const client = new Client({
 })
 
 abl.count('<api key>', client)
-    .then((data) => console.log(data))
+    .then(() => console.log())
     .catch((e) => console.log(e))
 ```
 

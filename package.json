@@ -1,6 +1,6 @@
 {
   "name": "abl-wrapper",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Astro bot list js api wrapper",
   "main": "src/index.js",
   "scripts": {},
