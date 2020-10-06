@@ -7,10 +7,11 @@ const abl = {
      * bots guild count
      * @param {string} apiKey Your bots token from botlists.com
      * @param {object} client
+     * @param callback
      * @returns {Promise<any>}
      */
 
-    count: async (apiKey, client) => {
+    count: async (apiKey, client, callback) => {
 
         if (typeof apiKey !== "string") throw new Error('Api Key only should be a string, not a number');
         if (!client) throw new Error('Missing client param');
@@ -27,12 +28,12 @@ const abl = {
                     }
                 })
 
-                return console.log(post.data)
+                callback(null, post.data)
             } catch (e) {
-                return console.log(e.message)
+                callback(new Error('API limit reached try again in an hour!'))
             }
-        });
 
+        });
 
     },
 
