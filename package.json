@@ -1,15 +1,21 @@
 {
   "name": "abl-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Arto bot list api wrapper",
   "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": ["astro bot list"],
   "author": "sell",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.20.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sell/abl-wrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sell/abl-wrapper/issues"
+  },
+  "homepage": "https://github.com/sell/abl-wrapper#readme"
 }

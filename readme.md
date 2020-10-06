@@ -4,9 +4,17 @@ Astro Bot List wrapper
 
 ```js
 const { abl } = require('abl-wrapper');
+const { client } = require('discord.js');
+const client = new Client({
+    disableEveryone: true,
+})
 
-abl.count('api key', client.guilds.cache.size).then((data) => console.log(data)).catch((e) => console.log(e))
+client.on('ready', () => {
+    abl.count('<api key>', client).then((data) => console.log(data)).catch((e) => console.log(e))
+})
+```
 
-/* voting from api is currently taken down */
-abl.vote('api key', 'bot id').then((data) => console.log(data)).catch((e) => console.log(e))
+```js
+/* WILL NO LONGER WORK, WORKING ON MAKING IT BETTER: DEPRECATED */
+abl.vote('api key', 'user id').then((data) => console.log(data)).catch((e) => console.log(e))
 ```

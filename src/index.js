@@ -6,18 +6,17 @@ const abl = {
     /**
      * bots guild count
      * @param {string} apiKey Your bots token from botlists.com
-     * @type {string} apiKey
-     * @param {number} data Your guild count
+     * @param {object} client
      * @returns {Promise<any>}
      */
 
-     count: async (apiKey, data) => {
+     count: async (apiKey, client) => {
 
         if (typeof apiKey !== "string") throw new Error('Api Key only should be a string, not a number');
-
+        if (!client) throw new Error('Missing client param');
         try {
             const post = await axios.post(url, {
-                guild_count: data
+                guild_count:  client.guilds.cache.size
             }, {
                 headers: {
                     token: apiKey,
@@ -33,35 +32,6 @@ const abl = {
 
     },
 
-    /**
-     * vote on your bot
-     * @param {string} apiKey Your bots token from botlists.com
-     * @param {string} userID the user's id who voted
-     * @returns {Promise<any>}
-     */
-
-    vote: async (apiKey, userID) => {
-
-        if (typeof apiKey !== "string" || typeof userID !== "string" ) throw new Error('Api Key only should be a string, not a number');
-
-        try {
-
-            const post = await axios.post(`${url}/vote`, {
-                userID
-            }, {
-                headers: {
-                    token: apiKey,
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                }
-            });
-
-            return post.data
-
-        } catch (e) {
-            return e.message
-        }
-    }
 }
 
 module.exports = { abl };
