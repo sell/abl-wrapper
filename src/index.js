@@ -40,6 +40,12 @@ const abl = {
 
     },
 
+    /**
+     * GET bots stats
+     * @param apiKey
+     * @return {Promise<any>}
+     */
+
     stats: async (apiKey) => {
 
         const stat = await axios.get(url, {

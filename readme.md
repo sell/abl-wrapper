@@ -16,3 +16,20 @@ abl.count('token', client, (error, success) => {
     else console.log(success)
 });
 ```
+
+<h3>Getting Bots Stats</h3>
+
+Using .then()
+```js
+abl.stats('abl token')
+    .then(d => console.log(d))
+    .catch(e => console.log(e.response.data));
+```
+
+Using async/await
+```js
+(async () => {
+    const ablStats = await abl.stats('abl token');
+    console.log(ablStats)
+})();
+```
