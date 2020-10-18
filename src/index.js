@@ -8,34 +8,50 @@ const abl = {
      * @param {string} apiKey Your bots token from botlists.com
      * @param {object} client
      * @param callback
-     * @returns {Promise<any>}
      */
 
-    count: async (apiKey, client, callback) => {
+    count: (apiKey, client, callback) => {
 
         if (typeof apiKey !== "string") throw new Error('Api Key only should be a string, not a number');
         if (!client) throw new Error('Missing client param');
 
-        client.on('ready', async () => {
+        async function postingStats () {
             try {
                 const post = await axios.post(url, {
-                    guild_count:  client.guilds.cache.size
+                    guild_count: client.guilds.cache.size
                 }, {
                     headers: {
                         token: apiKey,
                         Accept: "application/json",
                         "Content-Type": "application/json"
                     }
-                })
+                });
 
-                callback(null, post.data)
+                callback(null, post.data);
             } catch (e) {
                 callback(new Error('API limit reached try again in an hour!'))
             }
+        }
 
+        client.on('ready', async () => {
+            postingStats()
+            setInterval(postingStats, 1200000)
         });
 
     },
+
+    stats: async (apiKey) => {
+
+        const stat = await axios.get(url, {
+            headers: {
+                token: apiKey,
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            }
+        });
+
+        return stat.data;
+    }
 
 }
 

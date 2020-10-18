@@ -1,3 +1,8 @@
 const { abl } = require('../index');
 
-abl.count('<api key>', '').then((data) => console.log(data)).catch((e) => console.log(e))
+abl.count('abl token', client,(error, success) => {
+    if(error) throw new Error(error);
+    else console.log(success)
+})
+
+abl.stats('abl token').then(d => console.log(d)).catch(e => console.log(e.response.data))
